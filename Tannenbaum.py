@@ -20,4 +20,16 @@ def Sterne(n,l):
 
 Zahl=int(input("Wie groß soll der Baum sein?: "))
 
-Sterne(Zahl,0)
+Stern=Sterne(Zahl,0)
+
+Stamm=((Stern-1)/10)
+leer=int(((Stern-1)/2)-Stamm)
+Zahl=int(Zahl/3)
+Stamm=int((Stamm*2)+1)
+for i in range(0,Zahl):
+    leerStern=""
+    for j in range(0,leer):
+        leerStern=leerStern+" "
+    for j in range(0,Stamm):
+        leerStern=leerStern+"|"
+    print(leerStern)
