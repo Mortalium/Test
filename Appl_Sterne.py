@@ -1,3 +1,4 @@
+#Eine Methode soll n (nichtnegative ganze Zahl) Sterne nebeneinander drucken.
 def Sterne(n):
     if(n==0):
         print()

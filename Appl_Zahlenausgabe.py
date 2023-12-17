@@ -1,3 +1,4 @@
+#Eine Methode soll abwärts die Zahlen von n bis 1 ausgeben.
 def GibZahlausvon(n):
     if(n>0):
         print(n)
