@@ -13,4 +13,4 @@ Potenz=input("Wie lautet die Potenz?: ")
 
 Produkt=str(Pot(int(Basis),int(Potenz)))
 
-print("Die Potenz von " + Basis + " hoch " + Potenz + " ist " + Produkt)
+print("Das Ergebnis von " + Basis + " hoch " + Potenz + " ist " + Produkt)
