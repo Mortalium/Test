@@ -22,7 +22,8 @@ def printt(Length,Count):
 
 Count=input("Wie viele Rekursionen soll es geben?: ")
 Length=input("Wie lang soll gezeichnet werden?: ")
+t1.penup()
 t1.setpos(-int(Length)*1.5,0)
+t1.pendown()
 printt(int(Length),int(Count))
-t1.backward(int(Length)*1.5)
 turtle.done()
