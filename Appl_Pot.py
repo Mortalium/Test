@@ -7,10 +7,10 @@ def Pot(Basis,Potenz):
             return Basis*Pot(Basis,Potenz-1)
         else:
             return 1/Pot(Basis,Potenz*(-1))
+if(__name__=="__main__"):
+    Basis=input("Wie lautet die Basis?: ")
+    Potenz=input("Wie lautet die Potenz?: ")
 
-Basis=input("Wie lautet die Basis?: ")
-Potenz=input("Wie lautet die Potenz?: ")
+    Produkt=str(Pot(int(Basis),int(Potenz)))
 
-Produkt=str(Pot(int(Basis),int(Potenz)))
-
-print("Das Ergebnis von " + Basis + " hoch " + Potenz + " ist " + Produkt)
+    print("Das Ergebnis von " + Basis + " hoch " + Potenz + " ist " + Produkt)
