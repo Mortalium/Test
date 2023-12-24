@@ -8,7 +8,15 @@ def AxisPart(Count,Num,Dir):
         t1.forward(10)
         t1.back(20)
         t1.forward(10)
+        Pos=t1.pos()
         Number(Num,Dir)
+        t1.penup()
+        t1.setpos(Pos[0],Pos[1])
+        t1.pendown()
+        if(Dir=="Right"):
+            t1.setheading(90)
+        else:
+            t1.setheading(180)
         t1.right(90)
         t1.forward(50)
         AxisPart(Count-1,Num+1,Dir)
@@ -39,11 +47,6 @@ def One(Dir):
             t1.forward(30)
             t1.left(135)
             t1.forward(15)
-            t1.penup()
-            t1.back(15)
-            t1.right(135)
-            t1.forward(20)
-            t1.pendown()
         case 'UP':
             t1.penup()
             t1.right(180)
@@ -54,14 +57,6 @@ def One(Dir):
             t1.forward(30)
             t1.left(135)
             t1.forward(15)
-            t1.penup()
-            t1.back(15)
-            t1.right(135)
-            t1.back(15)
-            t1.right(90)
-            t1.forward(30)
-            t1.right(180)
-            t1.pendown()
 
 #def Two(Dir):
  #   match Dir:
