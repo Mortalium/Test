@@ -1,4 +1,5 @@
 import turtle
+import math
 
 t1=turtle.Turtle()
 
@@ -37,6 +38,8 @@ def Number(Number,Dir):
     match Number:
         case '1':
             One(Dir)
+        case '2':
+            Two(Dir)
 
 def One(Dir):
     match Dir:
@@ -49,24 +52,47 @@ def One(Dir):
             t1.forward(15)
         case 'UP':
             t1.penup()
-            t1.right(180)
-            t1.back(30)
-            t1.left(90)
+            t1.forward(30)
+            t1.right(90)
             t1.back(15)
             t1.pendown()
             t1.forward(30)
             t1.left(135)
             t1.forward(15)
 
-#def Two(Dir):
- #   match Dir:
-  #      case 'Right':
-
-   #     case 'UP':
+def Two(Dir):
+    match Dir:
+        case 'Right':
+            t1.penup()
+            t1.back(30)
+            t1.right(90)
+            t1.forward(10)
+            t1.left(90)
+            t1.pendown()
+            t1.circle(10,180)
+            t1.circle(10,-180)
+            t1.setheading(-135)
+            t1.forward(20*math.sqrt(2))
+            t1.left(135)
+            t1.forward(20)
+        case 'UP':
+            t1.penup()
+            t1.forward(25)
+            t1.right(135)
+            t1.forward(5*math.sqrt(2))
+            t1.left(45)
+            t1.pendown()
+            t1.circle(10,180)
+            t1.circle(10,-180)
+            t1.setheading(-135)
+            t1.forward(20*math.sqrt(2))
+            t1.left(135)
+            t1.forward(20)
 
 SPosX=-200
 SPosY=-200
 
+t1.speed(0)
 t1.hideturtle()
 
 t1.penup()
