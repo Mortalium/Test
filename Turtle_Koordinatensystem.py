@@ -40,6 +40,8 @@ def Number(Number,Dir):
             One(Dir)
         case '2':
             Two(Dir)
+        case '3':
+            Three(Dir)
 
 def One(Dir):
     match Dir:
@@ -47,18 +49,15 @@ def One(Dir):
             t1.penup()
             t1.back(50)
             t1.pendown()
-            t1.forward(30)
-            t1.left(135)
-            t1.forward(15)
         case 'UP':
             t1.penup()
             t1.forward(30)
             t1.right(90)
             t1.back(15)
             t1.pendown()
-            t1.forward(30)
-            t1.left(135)
-            t1.forward(15)
+    t1.forward(30)
+    t1.left(135)
+    t1.forward(15)
 
 def Two(Dir):
     match Dir:
@@ -69,12 +68,6 @@ def Two(Dir):
             t1.forward(10)
             t1.left(90)
             t1.pendown()
-            t1.circle(10,180)
-            t1.circle(10,-180)
-            t1.setheading(-135)
-            t1.forward(20*math.sqrt(2))
-            t1.left(135)
-            t1.forward(20)
         case 'UP':
             t1.penup()
             t1.forward(25)
@@ -82,12 +75,32 @@ def Two(Dir):
             t1.forward(5*math.sqrt(2))
             t1.left(45)
             t1.pendown()
-            t1.circle(10,180)
-            t1.circle(10,-180)
-            t1.setheading(-135)
-            t1.forward(20*math.sqrt(2))
-            t1.left(135)
-            t1.forward(20)
+    t1.circle(10,180)
+    t1.circle(10,-180)
+    t1.setheading(-135)
+    t1.forward(20*math.sqrt(2))
+    t1.left(135)
+    t1.forward(20)
+
+def Three(Dir):
+    match Dir:
+        case 'Right':
+            t1.penup()
+            t1.back(27.5)
+            t1.left(90)
+            t1.forward(7.5)
+            t1.right(90)
+            t1.pendown()
+        case 'UP':
+            t1.penup()
+            t1.forward(37.5)
+            t1.right(90)
+            t1.forward(7.5)
+            t1.pendown()
+    t1.right(180)
+    t1.circle(7.5,-270)
+    t1.right(180)
+    t1.circle(7.5,-270)
 
 SPosX=-200
 SPosY=-200
