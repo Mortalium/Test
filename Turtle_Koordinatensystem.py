@@ -44,6 +44,8 @@ def Number(Number,Dir):
             Three(Dir)
         case '4':
             Four(Dir)
+        case '5':
+            Five(Dir)
 
 def One(Dir):
     match Dir:
@@ -109,6 +111,30 @@ def Four(Dir):
     t1.forward(5)
     t1.left(135)
     t1.forward(math.sqrt(20*20/2)+5)
+
+def Five(Dir):
+    match Dir:
+        case 'Right':
+            t1.penup()
+            t1.back(20)
+            t1.left(90)
+            t1.back(7.5)
+            t1.pendown()
+        case 'UP':
+            t1.penup()
+            t1.forward(45)
+            t1.right(90)
+            t1.forward(15)
+            t1.left(90)
+            t1.back(15)
+            t1.pendown()
+    t1.forward(15)
+    t1.left(90)
+    t1.forward(10)
+    t1.right(90)
+    t1.back(5)
+    t1.circle(10,-180)
+    t1.back(5)
 
 SPosX=-200
 SPosY=-200
