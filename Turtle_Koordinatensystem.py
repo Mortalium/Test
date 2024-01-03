@@ -48,6 +48,8 @@ def Number(Number,Dir):
             Five(Dir)
         case '6':
             Six(Dir)
+        case '7':
+            Seven(Dir)
 
 def One(Dir):
     match Dir:
@@ -157,6 +159,33 @@ def Six(Dir):
     t1.left(10)
     t1.circle(7)
 
+def Seven(Dir):
+    match Dir:
+        case 'Right':
+            t1.penup()
+            t1.back(50)
+            t1.left(90)
+            t1.forward(7.5)
+            t1.pendown()
+        case 'UP':
+            t1.penup()
+            t1.forward(45)
+            t1.left(90)
+            t1.forward(7.5)
+            t1.right(90)
+            t1.pendown()
+    Angle=math.atan(30/15)*180/math.pi
+    t1.right(180-Angle)
+    t1.forward(math.sqrt(30*30+15*15))
+    t1.setheading(180)
+    t1.forward(15)
+    t1.penup()
+    t1.left(90)
+    t1.forward(15)
+    t1.right(90)
+    t1.back(12.5)
+    t1.pendown()
+    t1.forward(10)
 
 SPosX=-200
 SPosY=-200
