@@ -52,6 +52,8 @@ def Number(Number,Dir):
             Seven(Dir)
         case '8':
             Eight(Dir)
+        case '9':
+            Nine(Dir)
 
 def One(Dir):
     match Dir:
@@ -203,6 +205,25 @@ def Eight(Dir):
     t1.circle(7.5)
     t1.right(180)
     t1.circle(7.5)
+
+def Nine(Dir):
+    match Dir:
+        case 'Right':
+            t1.penup()
+            t1.back(50)
+            t1.right(90)
+            t1.back(7.5)
+            t1.pendown()
+        case 'UP':
+            t1.penup()
+            t1.forward(45)
+            t1.left(90)
+            t1.forward(15)
+            t1.left(90)
+            t1.pendown()
+    t1.circle(15,155)
+    t1.left(10)
+    t1.circle(7)
 
 SPosX=-200
 SPosY=-200
