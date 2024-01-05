@@ -50,6 +50,8 @@ def Number(Number,Dir):
             Six(Dir)
         case '7':
             Seven(Dir)
+        case '8':
+            Eight(Dir)
 
 def One(Dir):
     match Dir:
@@ -171,7 +173,7 @@ def Seven(Dir):
             t1.penup()
             t1.forward(45)
             t1.left(90)
-            t1.forward(7.5)
+            t1.forward(15)
             t1.right(90)
             t1.pendown()
     Angle=math.atan(30/15)*180/math.pi
@@ -186,6 +188,21 @@ def Seven(Dir):
     t1.back(12.5)
     t1.pendown()
     t1.forward(10)
+
+def Eight(Dir):
+    match Dir:
+        case 'Right':
+            t1.penup()
+            t1.back(35)
+            t1.left(90)
+            t1.pendown()
+        case 'UP':
+            t1.penup()
+            t1.forward(37.5)
+            t1.pendown()
+    t1.circle(7.5)
+    t1.right(180)
+    t1.circle(7.5)
 
 SPosX=-200
 SPosY=-200
