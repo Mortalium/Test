@@ -1,5 +1,6 @@
 import turtle
 import math
+from Appl_Pot import Pot
 
 t1=turtle.Turtle()
 
@@ -120,7 +121,7 @@ def Four(Dir):
     One(Dir)
     t1.forward(5)
     t1.left(135)
-    t1.forward(math.sqrt(20*20/2)+5)
+    t1.forward(math.sqrt(Pot(20,2)/2)+5)
 
 def Five(Dir):
     match Dir:
@@ -182,7 +183,7 @@ def Seven(Dir):
             t1.pendown()
     Angle=math.atan(30/15)*180/math.pi
     t1.right(180-Angle)
-    t1.forward(math.sqrt(30*30+15*15))
+    t1.forward(math.sqrt(Pot(30,2)+Pot(15,2)))
     t1.setheading(180)
     t1.forward(15)
     t1.penup()
@@ -258,6 +259,26 @@ def Ten(Dir):
     t1.circle(7.5,180)
     t1.forward(15)
     
+def print_func():
+    func=input("Welche Funktion (Parabel, ) soll geplotted werden? ")
+    match func:
+        case "Parabel":
+            t1.penup()
+            t1.setpos(SPosX,SPosY+Parabel_func(0))
+            t1.pendown()
+            for i in range(1,501):
+                t1.setpos(SPosX+i,SPosY+Parabel_func(i))
+            pass
+        case _:
+            print("Wrong input!")
+            print()
+            print_func()
+            pass
+
+def Parabel_func(x):
+    Kla=(x/50)-5
+    y_pos=(Pot(Kla,2)*50)/2.5
+    return y_pos
 
 SPosX=-200
 SPosY=-200
@@ -280,5 +301,7 @@ t1.pendown()
 t1.back(50)
 t1.forward(50)
 AxisPart(10,0,"UP")
+
+print_func()
 
 turtle.done()
