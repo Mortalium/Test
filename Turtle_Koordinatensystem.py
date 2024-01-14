@@ -1,6 +1,7 @@
 import turtle
 import math
 from Appl_Pot import Pot
+from Betragrechner import Betr
 
 t1=turtle.Turtle()
 
@@ -260,7 +261,7 @@ def Ten(Dir):
     t1.forward(15)
     
 def print_func():
-    func=input("Welche Funktion (Parabel, ) soll geplotted werden? ")
+    func=input("Welche Funktion (Parabel, Kubisch) soll geplotted werden? ")
     match func:
         case "Parabel":
             t1.penup()
@@ -269,6 +270,12 @@ def print_func():
             for i in range(1,501):
                 t1.setpos(SPosX+i,SPosY+Parabel_func(i))
             pass
+        case "Kubisch":
+            t1.penup()
+            t1.setpos(SPosX,SPosY+250+Kubische_func(0))
+            t1.pendown()
+            for i in range(1,501):
+                t1.setpos(SPosX+i,SPosY+250+Kubische_func(i))
         case _:
             print("Wrong input!")
             print()
@@ -277,7 +284,19 @@ def print_func():
 
 def Parabel_func(x):
     Kla=(x/50)-5
-    y_pos=(Pot(Kla,2)*50)/2.5
+    Kla0=-5
+    Fak=Betr((Pot(Kla0,2)/10))
+    y_pos=(Pot(Kla,2)*50)/Fak
+    # (Pot(Kla,2)/10) errechnet den streckungs-/stauchungsfaktor
+    #*50, weil in 50 Pixel Schritten gezählt wird
+    return y_pos
+
+def Kubische_func(x):
+    Kla=(x/50)-5
+    Kla0=-5
+    Fak=Betr((Pot(Kla0,3)/10))*2
+    #*2->1/Fak => Werte halbieren sich ->Funktion komplett im pos y Bereich
+    y_pos=(Pot(Kla,3)*50)/Fak
     return y_pos
 
 SPosX=-200
