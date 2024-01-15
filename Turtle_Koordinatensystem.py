@@ -3,8 +3,6 @@ import math
 from Appl_Pot import Pot
 from Betragrechner import Betr
 
-t1=turtle.Turtle()
-
 def AxisPart(Count,Num,Dir):
     if(Count>=0):
         t1.left(90)
@@ -262,64 +260,76 @@ def Ten(Dir):
     
 def print_func():
     func=input("Welche Funktion (Parabel, Kubisch) soll geplotted werden? ")
+    a=float(input("Streckungs-/Stauchungsfaktor: "))
+    b=float(input("Verschiebung nach links(+)/rechts(-): "))
+    c=float(input("Verschiebung nach oben(+)/unten(-): "))
+
+    SPosX=-200
+    SPosY=-200
+
+    t1.speed(0)
+    t1.hideturtle()
+
+    t1.penup()
+    t1.setpos(SPosX,SPosY)
+    t1.pendown()
+
+    t1.back(50)
+    t1.forward(50)
+    AxisPart(10,0,"Right")
+
+    t1.penup()
+    t1.setpos(SPosX,SPosY)
+    t1.pendown()
+
+    t1.back(50)
+    t1.forward(50)
+    AxisPart(10,0,"UP")
     match func:
         case "Parabel":
-            t1.penup()
-            t1.setpos(SPosX,SPosY+Parabel_func(0))
-            t1.pendown()
-            for i in range(1,501):
-                t1.setpos(SPosX+i,SPosY+Parabel_func(i))
+            try:
+                t1.penup()
+                t1.setpos(SPosX,SPosY+Parabel_func(0,a,b,c))
+                t1.pendown()
+                for i in range(1,501):
+                    t1.setpos(SPosX+i,SPosY+Parabel_func(i,a,b,c))
+            except:
+                print("Wrong input!")
+                print()
+                print_func() 
+                pass
             pass
         case "Kubisch":
-            t1.penup()
-            t1.setpos(SPosX,SPosY+250+Kubische_func(0))
-            t1.pendown()
-            for i in range(1,501):
-                t1.setpos(SPosX+i,SPosY+250+Kubische_func(i))
+            try:
+                t1.penup()
+                t1.setpos(SPosX,SPosY+250+Kubische_func(0,a,b,c))
+                t1.pendown()
+                for i in range(1,501):
+                    t1.setpos(SPosX+i,SPosY+250+Kubische_func(i,a,b,c))
+            except:
+                print("Wrong input!")
+                print()
+                print_func() 
+                pass
+            pass
         case _:
             print("Wrong input!")
             print()
             print_func()
             pass
 
-def Parabel_func(x):
-    Kla=(x/50)-5
-    Kla0=-5
-    Fak=Betr((Pot(Kla0,2)/10))
-    y_pos=(Pot(Kla,2)*50)/Fak
-    # (Pot(Kla,2)/10) errechnet den streckungs-/stauchungsfaktor
+def Parabel_func(x,a,b,c):
+    Kla=(x/50)-b
+    y_pos=a*(Pot(Kla,2)*50)+c
     #*50, weil in 50 Pixel Schritten gezählt wird
     return y_pos
 
-def Kubische_func(x):
-    Kla=(x/50)-5
-    Kla0=-5
-    Fak=Betr((Pot(Kla0,3)/10))*2
-    #*2->1/Fak => Werte halbieren sich ->Funktion komplett im pos y Bereich
-    y_pos=(Pot(Kla,3)*50)/Fak
+def Kubische_func(x,a,b,c):
+    Kla=(x/50)-b
+    y_pos=a*(Pot(Kla,3)*50)+c
     return y_pos
 
-SPosX=-200
-SPosY=-200
-
-t1.speed(0)
-t1.hideturtle()
-
-t1.penup()
-t1.setpos(SPosX,SPosY)
-t1.pendown()
-
-t1.back(50)
-t1.forward(50)
-AxisPart(10,0,"Right")
-
-t1.penup()
-t1.setpos(SPosX,SPosY)
-t1.pendown()
-
-t1.back(50)
-t1.forward(50)
-AxisPart(10,0,"UP")
+t1=turtle.Turtle()
 
 print_func()
 
