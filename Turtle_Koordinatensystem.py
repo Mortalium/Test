@@ -259,9 +259,13 @@ def Ten(Dir):
     t1.forward(15)
     
 def print_func():
-    func=input("Welche Funktion (Parabel, Kubisch) soll geplotted werden? ")
-    a=float(input("Streckungs-/Stauchungsfaktor: "))
-    b=float(input("Verschiebung nach links(+)/rechts(-): "))
+    grad=int(input("Welchen Grad hat die Funktion?: "))
+    a=0
+    while a==0:
+        a=float(input("Streckungs-/Stauchungsfaktor: "))
+        if a==0:
+            print("Faktor darf nicht 0 sein!")
+    b=float(input("Verschiebung nach links(-)/rechts(+): "))
     c=float(input("Verschiebung nach oben(+)/unten(-): "))
 
     SPosX=-200
@@ -285,38 +289,49 @@ def print_func():
     t1.back(50)
     t1.forward(50)
     AxisPart(10,0,"UP")
-    match func:
-        case "Parabel":
-            try:
+
+    try:
+        t1.penup()
+        if (grad<0) and (b==0):
+            anf=1
+        else:
+            anf=0
+        t1.setpos(SPosX,SPosY+grad_func(anf,a,b,c,grad))
+        anf+=1
+        t1.pendown()
+        for i in range(anf,501):
+            if grad<0 and i==b*50:
+                if Betr(a)<0.1:
+                    if grad_func(i-1,a,b,c,grad)>grad_func(i+1,a,b,c,grad):
+                        t1.setheading(90)
+                        t1.forward(500)
+                    else:
+                        t1.setheading(-90)
+                        t1.forward(500)
                 t1.penup()
-                t1.setpos(SPosX,SPosY+Parabel_func(0,a,b,c))
+                t1.setpos(SPosX+i+1,SPosY+grad_func(i+1,a,b,c,grad))
                 t1.pendown()
-                for i in range(1,501):
-                    t1.setpos(SPosX+i,SPosY+Parabel_func(i,a,b,c))
-            except:
-                print("Wrong input!")
-                print()
-                print_func() 
-                pass
-            pass
-        case "Kubisch":
-            try:
-                t1.penup()
-                t1.setpos(SPosX,SPosY+250+Kubische_func(0,a,b,c))
-                t1.pendown()
-                for i in range(1,501):
-                    t1.setpos(SPosX+i,SPosY+250+Kubische_func(i,a,b,c))
-            except:
-                print("Wrong input!")
-                print()
-                print_func() 
-                pass
-            pass
-        case _:
-            print("Wrong input!")
-            print()
-            print_func()
-            pass
+                if Betr(a)<0.1:
+                    if grad_func(i-1,a,b,c,grad)>grad_func(i+1,a,b,c,grad):
+                        t1.setheading(-90)
+                        t1.forward(500)
+                        t1.back(500)
+                    else:
+                        t1.setheading(90)
+                        t1.forward(500)
+                        t1.back(500)
+                i+=1
+            else:
+                t1.setpos(SPosX+i,SPosY+grad_func(i,a,b,c,grad))
+    except:
+        print("Wrong input!")
+        print()
+        print_func() 
+
+def grad_func(x,a,b,c,grad):
+    Kla=(x/50)-b
+    y_pos=(a*(Pot(Kla,grad))+c)*50
+    return y_pos
 
 def Parabel_func(x,a,b,c):
     Kla=(x/50)-b
