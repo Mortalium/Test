@@ -333,16 +333,6 @@ def grad_func(x,a,b,c,grad):
     y_pos=(a*(Pot(Kla,grad))+c)*50
     return y_pos
 
-def Parabel_func(x,a,b,c):
-    Kla=(x/50)-b
-    y_pos=a*(Pot(Kla,2)*50)+c
-    #*50, weil in 50 Pixel Schritten gezählt wird
-    return y_pos
-
-def Kubische_func(x,a,b,c):
-    Kla=(x/50)-b
-    y_pos=a*(Pot(Kla,3)*50)+c
-    return y_pos
 
 t1=turtle.Turtle()
 
