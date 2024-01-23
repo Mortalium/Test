@@ -6,13 +6,22 @@ from Appl_Pot import Pot
 
 import math
 
+def Stand_abw(List,n):
+    Mittelwert=Count_Value(List,n-1)/n
+
+    Varianz_Value=Varianz(List,Mittelwert,0,0)
+
+    Standartabweichung=math.sqrt(Varianz_Value)
+
+    return Standartabweichung
+
 def Varianz(List,Mittelwert,Ind,Abw):
     if Ind<len(List):
         Abw=Abw+Pot(List[Ind]-Mittelwert,2)
         Abw=Varianz(List,Mittelwert,Ind+1,Abw)
         return Abw
     else:
-        return Abw
+        return Abw/len(List)
 
 
 
@@ -22,10 +31,6 @@ List=[]
 
 List=Appl_Bubble_Sort.CreateList(List,n)
 
-Mittelwert=Count_Value(List,n-1)/n
-
-Varianz_Value=Varianz(List,Mittelwert,0,0)/len(List)
-
-Standartabweichung=math.sqrt(Varianz_Value)
+Stand_abw(List,n)
 
 print("Die Standartabweichung ist "+str(Standartabweichung))
