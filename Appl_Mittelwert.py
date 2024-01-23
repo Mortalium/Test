@@ -7,14 +7,15 @@ def Count_Value(List,Count):
     else:
         return List[0]
 
-n=int(input("Wie lange soll die Liste sein: "))
+if(__name__=="__main__"):
+    n=int(input("Wie lange soll die Liste sein: "))
 
-List=[]
+    List=[]
 
-List=Appl_Bubble_Sort.CreateList(List,n)
+    List=Appl_Bubble_Sort.CreateList(List,n)
 
-amount=Count_Value(List,n-1)
+    amount=Count_Value(List,n-1)
 
-Mittelwert=float(amount/n)
+    Mittelwert=float(amount/n)
 
-print("Der Mittelwert der Liste ist: "+str(Mittelwert))
+    print("Der Mittelwert der Liste ist: "+str(Mittelwert))
