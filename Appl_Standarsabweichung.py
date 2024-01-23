@@ -31,6 +31,6 @@ List=[]
 
 List=Appl_Bubble_Sort.CreateList(List,n)
 
-Stand_abw(List,n)
+Standartabweichung=Stand_abw(List,n)
 
 print("Die Standartabweichung ist "+str(Standartabweichung))
