@@ -1,10 +1,9 @@
 import Appl_Bubble_Sort
 
 n=int(input("Wie lange soll die Liste sein: "))
+print()
 
-List=[]
-
-List=Appl_Bubble_Sort.CreateList(List,n)
+List=Appl_Bubble_Sort.CreateList(n)
 
 SList=Appl_Bubble_Sort.BBSort(List)
 

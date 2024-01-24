@@ -1,3 +1,5 @@
+import random
+
 def BBSort(List):
     global Change
     Change=False
@@ -19,12 +21,37 @@ def SortList(List,Count):
         List=SortList(List,Count+1)
         return List
     return List
+
+def CreateList(n):
+    List=[]
+    manrand=input("Soll die liste manuell(man) oder random(rand) befüllt werden? ")
+    print()
+    match manrand:
+        case "man":
+            return CreateManList(List,n)
+        case "rand":
+            Limit=int(input("Limit: "))
+            print()
+            return CreateRandList(List,n,Limit)
+        case _:
+            print("Wrong input!")
+            print()
+            return CreateList(n)
     
-def CreateList(List,n):
+def CreateManList(List,n):
     if(n>0):
         Element=int(input("Zahl: "))
         List.append(Element)
-        List=CreateList(List,n-1)
+        List=CreateManList(List,n-1)
+        return List
+    else:
+        return List
+    
+def CreateRandList(List,n,Limit):
+    if(n>0):
+        Element=random.randint(1,Limit)
+        List.append(Element)
+        List=CreateRandList(List,n-1,Limit)
         return List
     else:
         return List
@@ -32,13 +59,14 @@ def CreateList(List,n):
 
 if(__name__=="__main__"):
     n=int(input("Wie vile Zahlen sind in der Liste?: "))
+    print()
 
-    NL=[]
-
-    NL=CreateList(NL,n)
+    NL=CreateList(n)
 
     print(NL)
+    print()
 
     NL=BBSort(NL)
 
     print(NL)
+    print()

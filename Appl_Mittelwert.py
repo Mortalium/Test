@@ -9,10 +9,9 @@ def Count_Value(List,Count):
 
 if(__name__=="__main__"):
     n=int(input("Wie lange soll die Liste sein: "))
+    print()
 
-    List=[]
-
-    List=Appl_Bubble_Sort.CreateList(List,n)
+    List=Appl_Bubble_Sort.CreateList(n)
 
     amount=Count_Value(List,n-1)
 
