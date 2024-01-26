@@ -24,12 +24,12 @@ def Varianz(List,Mittelwert,Ind,Abw):
         return Abw/len(List)
 
 
+if(__name__=="__main__"):
+    n=int(input("Wie lange soll die Liste sein: "))
+    print()
 
-n=int(input("Wie lange soll die Liste sein: "))
-print()
+    List=Appl_Bubble_Sort.CreateList(n)
 
-List=Appl_Bubble_Sort.CreateList(n)
+    Standartabweichung=Stand_abw(List,n)
 
-Standartabweichung=Stand_abw(List,n)
-
-print("Die Standartabweichung ist "+str(Standartabweichung))
+    print("Die Standartabweichung ist "+str(Standartabweichung))

@@ -2,6 +2,8 @@ import turtle
 import math
 from Appl_Pot import Pot
 from Betragrechner import Betr
+from Appl_Mittelwert import Count_Value
+from Appl_Standardabweichung import Stand_abw
 
 def AxisPart(Count,Num,Dir):
     if(Count>=0):
@@ -259,14 +261,20 @@ def Ten(Dir):
     t1.forward(15)
     
 def print_func():
-    grad=int(input("Welchen Grad hat die Funktion?: "))
-    a=0
-    while a==0:
-        a=float(input("Streckungs-/Stauchungsfaktor: "))
-        if a==0:
-            print("Faktor darf nicht 0 sein!")
-    b=float(input("Verschiebung nach links(-)/rechts(+): "))
-    c=float(input("Verschiebung nach oben(+)/unten(-): "))
+    functype=input("Welche Art von >Funktion soll geprinted werden? (Polynom(Scheitel):PS; Normalverteilung:NV)")
+    match functype:
+        case "PS":
+            grad=int(input("Welchen Grad hat die Funktion?: "))
+            a=0
+            while a==0:
+                a=float(input("Streckungs-/Stauchungsfaktor: "))
+                if a==0:
+                    print("Faktor darf nicht 0 sein!")
+            b=float(input("Verschiebung nach links(-)/rechts(+): "))
+            c=float(input("Verschiebung nach oben(+)/unten(-): "))
+        case "NV":
+            Mhue=float(input("Wie lautet der Mittelwert der Funktion? "))
+            Sigma=float(input("Wie lautet die Standartabweichung der Funktion? "))
 
     SPosX=-200
     SPosY=-200
@@ -289,53 +297,69 @@ def print_func():
     t1.back(50)
     t1.forward(50)
     AxisPart(10,0,"UP")
-
-    try:
-        t1.penup()
-        if (grad<0) and (b==0):
-            anf=1
-        else:
-            anf=0
-        t1.setpos(SPosX,SPosY+grad_func(anf,a,b,c,grad))
-        anf+=1
-        t1.pendown()
-        for i in range(anf,501):
-            if grad<0 and i==b*50:
-                if Betr(a)<0.1:
-                    if grad_func(i-1,a,b,c,grad)>grad_func(i+1,a,b,c,grad):
-                        t1.setheading(90)
-                        t1.forward(500)
-                    else:
-                        t1.setheading(-90)
-                        t1.forward(500)
+    match functype:
+        case "PS":
+            try:
                 t1.penup()
-                t1.setpos(SPosX+i+1,SPosY+grad_func(i+1,a,b,c,grad))
+                if (grad<0) and (b==0):
+                    anf=1
+                else:
+                    anf=0
+                t1.setpos(SPosX,SPosY+grad_func(anf,a,b,c,grad))
+                anf+=1
                 t1.pendown()
-                if Betr(a)<0.1:
-                    if grad_func(i-1,a,b,c,grad)>grad_func(i+1,a,b,c,grad):
-                        t1.setheading(-90)
-                        t1.forward(500)
-                        t1.back(500)
+                for i in range(anf,501):
+                    if grad<0 and i==b*50:
+                        if Betr(a)<0.1:
+                            if grad_func(i-1,a,b,c,grad)>grad_func(i+1,a,b,c,grad):
+                                t1.setheading(90)
+                                t1.forward(500)
+                            else:
+                                t1.setheading(-90)
+                                t1.forward(500)
+                        t1.penup()
+                        t1.setpos(SPosX+i+1,SPosY+grad_func(i+1,a,b,c,grad))
+                        t1.pendown()
+                        if Betr(a)<0.1:
+                            if grad_func(i-1,a,b,c,grad)>grad_func(i+1,a,b,c,grad):
+                                t1.setheading(-90)
+                                t1.forward(500)
+                                t1.back(500)
+                            else:
+                                t1.setheading(90)
+                                t1.forward(500)
+                                t1.back(500)
+                        i+=1
                     else:
-                        t1.setheading(90)
-                        t1.forward(500)
-                        t1.back(500)
-                i+=1
-            else:
-                t1.setpos(SPosX+i,SPosY+grad_func(i,a,b,c,grad))
-    except:
-        print("Wrong input!")
-        print()
-        print_func() 
+                        t1.setpos(SPosX+i,SPosY+grad_func(i,a,b,c,grad))
+            except:
+                print("Wrong input!")
+                print()
+                print_func() 
+        case "NV":
+            try:
+                t1.penup()
+                t1.setpos(SPosX,SPosY+normal_func(0,Mhue,Sigma))
+                t1.pendown()
+                for i in range(1,501):
+                    t1.setpos(SPosX+i,SPosY+normal_func(i,Mhue,Sigma))
+            except:
+                print("Wrong Input!")
+                print()
+                print_func()
+
+def normal_func(x,Mhue,Sigma):
+    y_pos=1/(Sigma*math.sqrt(2*math.pi))*math.exp(-0.5*(Pot((x/50-Mhue)/Sigma,2)))*50*10
+    return y_pos
 
 def grad_func(x,a,b,c,grad):
     Kla=(x/50)-b
     y_pos=(a*(Pot(Kla,grad))+c)*50
     return y_pos
 
+if(__name__=="__main__"):
+    t1=turtle.Turtle()
 
-t1=turtle.Turtle()
+    print_func()
 
-print_func()
-
-turtle.done()
+    turtle.done()
