@@ -11,18 +11,12 @@ for i in range(3):
             k=0
         else:
             k=i+1
-
-        if(i==0):
-            l=2
-        else:
-            l=i-1
-
         if user_action==computer_action:
             print(f"\nBoth players selected {user_action}. It's a tie!\n")
         elif computer_action==possible_actions[k]:
             print(f"\nComputer chose {computer_action}, you chose {user_action}.\n\n")
             print("YOU LOSE!")
-        elif computer_action==possible_actions[l]:
+        elif computer_action==possible_actions[i-1]:
             print(f"\nComputer chose {computer_action}, you chose {user_action}.\n\n")
             print("YOU WIN!!!")
             print()
