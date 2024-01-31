@@ -1,37 +1,43 @@
 import random
 
-n=int(input("Wie lange soll die Liste sein? "))
-print()
+def CreateList():
+    n=int(input("Wie lange soll die Liste sein? "))
+    print()
 
-List=[]
+    List=[]
+    mode=input("Manuell (man) oder Random (rand)? ")
+    print()
 
-mode=input("Manuell (man) oder Random (rand)? ")
-print()
+    match mode:
+        case "man":
+            for i in range(n):
+                Zahl=int(input("Zahl "+i+": "))
+                List.append(Zahl)
+        case "rand":
+            Limit=int(input("Limit: "))
+            for i in range(n):
+                Zahl=random.randint(0,Limit)
+                List.append(Zahl)
+    return List
 
-match mode:
-    case "man":
-        for i in range(n):
-            Zahl=int(input("Zahl "+i+": "))
-            List.append(Zahl)
-    case "rand":
-        Limit=int(input("Limit: "))
-        for i in range(n):
-            Zahl=random.randint(0,Limit)
-            List.append(Zahl)
+def BBSort(List):
+    change=True
 
-print(List)
+    while change:
+        change=False
+        for i in range(len(List)):
+            if(List[i]>List[i+1]):
+                tmp=List[i]
+                List[i]=List[i+1]
+                List[i+1]=tmp
+                change=True
+    return List
 
-SList=List.copy()
+if(__name__=="__main__"):
+    List=CreateList()
 
-change=True
+    print(List)
 
-while change:
-    change=False
-    for i in range(n-1):
-        if(SList[i]>SList[i+1]):
-            tmp=SList[i]
-            SList[i]=SList[i+1]
-            SList[i+1]=tmp
-            change=True
+    SList=BBSort(List)
 
-print(SList)
+    print(SList)
