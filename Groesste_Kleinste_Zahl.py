@@ -1,31 +1,36 @@
-print("Größte/Kleinste Zahl berechnen")
-print()
+def Max(Array,Ind):
+    g=Array[0]
 
-anzahl=input("Wie viele Zahlen sollen verglichen werden?: ")
-anzahl= int(anzahl)
+    for x in range(1,Ind+1):
+        if Array[x]>g:
+            g=Array[x]
+    return g
 
-print("-------------------")
+if(__name__=="__main__"):
+    print("Größte/Kleinste Zahl berechnen")
+    print()
 
-Array=[]
+    anzahl=input("Wie viele Zahlen sollen verglichen werden?: ")
+    anzahl= int(anzahl)
 
-for x in range(0,anzahl):
-    Array.append(input("Zahl: "))
+    print("-------------------")
 
-g=Array[0]
+    Array=[]
 
-for x in range(1,anzahl):
-    if Array[x]>g:
-        g=Array[x]
+    for x in range(0,anzahl):
+        Array.append(input("Zahl: "))
 
-print("-------------------")
-print("Die größte Zahl ist {}".format(g))
-print()
+    g=Max(Array,anzahl-1)
 
-k=Array[0]
+    print("-------------------")
+    print("Die größte Zahl ist {}".format(g))
+    print()
 
-for x in range(1,anzahl):
-    if Array[x]<k:
-        k=Array[x]
+    k=Array[0]
 
-print("Die kleinste Zahl ist{}".format(k))
-print()
+    for x in range(1,anzahl):
+        if Array[x]<k:
+            k=Array[x]
+
+    print("Die kleinste Zahl ist{}".format(k))
+    print()
