@@ -1,26 +1,23 @@
 import random
 
 def BBSort(List):
-    global Change
-    Change=False
-    List=SortList(List,0)
+    List,Change=SortList(List,0,False)
     if Change:
         List=BBSort(List)
         return List
     else:
         return List
 
-def SortList(List,Count):
+def SortList(List,Count,Change):
     if(Count+1<len(List)):
         if(List[Count]>List[Count+1]):
             tmp=List[Count+1]
             List[Count+1]=List[Count]
             List[Count]=tmp
-            global Change
             Change=True
-        List=SortList(List,Count+1)
-        return List
-    return List
+        List,Change=SortList(List,Count+1,Change)
+        return List,Change
+    return List,Change
 
 def CreateList(n):
     List=[]
@@ -65,6 +62,8 @@ if(__name__=="__main__"):
 
     print(NL)
     print()
+
+    global Change
 
     NL=BBSort(NL)
 

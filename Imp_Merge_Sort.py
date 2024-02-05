@@ -29,6 +29,6 @@ if(__name__=="__main__"):
     print(List)
     print()
 
-    MSort(List)
+    List=MSort(List)
     print(List)
     print()
