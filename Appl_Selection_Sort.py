@@ -19,9 +19,7 @@ def Selec_Sort(List,Ind):
         return List
 
 if(__name__=="__main__"):
-    n=int(input("Wie lange soll das Array sein? "))
-
-    List=CreateList(n)
+    List=CreateList()
 
     print(List)
     print()

@@ -23,10 +23,7 @@ def Compare(List,n):
         return List
     
 if(__name__=="__main__"):
-    n=int(input("Wie viele Elemente soll die Liste enthalten? "))
-    print()
-
-    List=CreateList(n)
+    List=CreateList()
 
     print(List)
     print()

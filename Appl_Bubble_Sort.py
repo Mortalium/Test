@@ -19,8 +19,10 @@ def SortList(List,Count,Change):
         return List,Change
     return List,Change
 
-def CreateList(n):
+def CreateList():
     List=[]
+    n=int(input("Wie lange soll die Liste sein? "))
+    print()
     manrand=input("Soll die liste manuell(man) oder random(rand) befüllt werden? ")
     print()
     match manrand:
@@ -33,8 +35,8 @@ def CreateList(n):
         case _:
             print("Wrong input!")
             print()
-            return CreateList(n)
-    
+            return CreateList(n)       
+
 def CreateManList(List,n):
     if(n>0):
         Element=int(input("Zahl: "))
@@ -55,15 +57,10 @@ def CreateRandList(List,n,Limit):
 
 
 if(__name__=="__main__"):
-    n=int(input("Wie vile Zahlen sind in der Liste?: "))
-    print()
-
-    NL=CreateList(n)
+    NL=CreateList()
 
     print(NL)
     print()
-
-    global Change
 
     NL=BBSort(NL)
 
