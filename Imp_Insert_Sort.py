@@ -1,6 +1,6 @@
 from Imp_Bubble_Sort import CreateList
 
-def ISort(List):
+def Insert_Sort(List):
     for i in range(len(List)-1):
         for j in range(i+1,0,-1):
             if(List[j]<List[j-1]):
@@ -10,13 +10,13 @@ def ISort(List):
             else:
                 break
     return List
+if(__name__=="__main__"):
+    List=CreateList()
 
-List=CreateList()
+    print(List)
+    print()
 
-print(List)
-print()
+    SList=Insert_Sort(List)
 
-SList=ISort(List)
-
-print(SList)
-print()
+    print(SList)
+    print()

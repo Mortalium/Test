@@ -1,9 +1,9 @@
 from Appl_Bubble_Sort import CreateList
 
-def Insert_Sort(List,n):
+def In_Sort(List,n):
     if(n<len(List)):
         List=Compare(List,n)
-        List=Insert_Sort(List,n+1)
+        List=In_Sort(List,n+1)
         return List
     else:
         return List
@@ -21,14 +21,17 @@ def Compare(List,n):
             return List
     else:
         return List
-    
+
+def Insert_Sort(List):
+    return In_Sort(List,0)
+
 if(__name__=="__main__"):
     List=CreateList()
 
     print(List)
     print()
 
-    List=Insert_Sort(List,0)
+    List=Insert_Sort(List)
 
     print(List)
     print()
