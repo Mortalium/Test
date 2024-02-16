@@ -6,6 +6,8 @@ import Appl_Bubble_Sort
 import Imp_Bubble_Sort
 import Appl_Insert_Sort
 import Imp_Insert_Sort
+import Appl_Selection_Sort
+import Imp_Selection_Sort
 
 import time
 
@@ -57,3 +59,26 @@ else:
     print("Andere Ergebnisse")
 
 #Appl needs more time
+
+ApplSelectt1=time.time()
+
+ApplSortList=Appl_Selection_Sort.Selection_Sort(RandList.copy())
+
+ApplSelectt2=time.time()
+
+ImpSelectt1=time.time()
+
+ImpSortList=Imp_Selection_Sort.Selection_Sort(RandList.copy())
+
+ImpSelectt2=time.time()
+
+if(ApplSortList==ImpSortList):
+    print("Select Sort: ")
+    print()
+    print("ApplSortTime: "+str(ApplSelectt2-ApplSelectt1))
+    print("ImpSortTime: "+str(ImpSelectt2-ImpSelectt1))
+    print()
+else:
+    print("Andere Ergebnisse")
+
+#Appl takes more time

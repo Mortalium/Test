@@ -1,10 +1,10 @@
 from Appl_Bubble_Sort import CreateList
 from Appl_Groesste_Zahl import Max
 
-def Selec_Sort(List,Ind):
+def SSort(List,Ind):
     if(Ind<len(List)):
 
-        List=Selec_Sort(List,Ind+1)
+        List=SSort(List,Ind+1)
 
         Maximum=Max(List,Ind,0)
 
@@ -18,13 +18,16 @@ def Selec_Sort(List,Ind):
     else:
         return List
 
+def Selection_Sort(List):
+    return SSort(List,1)
+
 if(__name__=="__main__"):
     List=CreateList()
 
     print(List)
     print()
 
-    SList=Selec_Sort(List,1)
+    SList=Selection_Sort(List)
 
     print()
     print(SList)

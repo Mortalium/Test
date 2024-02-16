@@ -1,7 +1,7 @@
 from Imp_Bubble_Sort import CreateList
 from Groesste_Kleinste_Zahl import Max
 
-def SSort(List):
+def Selection_Sort(List):
     for i in range(len(List)-1,0,-1):
         Maximum=Max(List,i)
         MInd=List.index(Maximum)
@@ -15,6 +15,6 @@ if(__name__=="__main__"):
     print(List)
     print()
 
-    SList=SSort(List)
+    SList=Selection_Sort(List)
     print(SList)
     print()
