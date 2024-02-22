@@ -8,6 +8,8 @@ import Appl_Insert_Sort
 import Imp_Insert_Sort
 import Appl_Selection_Sort
 import Imp_Selection_Sort
+import Appl_Merge_Sort
+import Imp_Merge_Sort
 
 import time
 
@@ -82,3 +84,26 @@ else:
     print("Andere Ergebnisse")
 
 #Appl takes more time
+    
+ApplMerget1=time.time()
+
+ApplSortList=Appl_Merge_Sort.Merge_Sort(RandList.copy())
+
+ApplMerget2=time.time()
+
+ImpMerget1=time.time()
+
+ImpSortList=Imp_Merge_Sort.Merge_Sort(RandList.copy())
+
+ImpMerget2=time.time()
+
+if(ApplSortList==ImpSortList):
+    print("Merge Sort: ")
+    print()
+    print("ApplSortTime: "+str(ApplMerget2-ApplMerget1))
+    print("ImpSortTime: "+str(ImpMerget2-ImpMerget1))
+    print()
+else:
+    print("Andere Ergebnisse")
+
+#Appl takes longer

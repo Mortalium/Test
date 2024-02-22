@@ -1,12 +1,12 @@
 from Imp_Bubble_Sort import CreateList
 
-def MSort(List):
+def Merge_Sort(List):
     if(len(List)==1):
         return List
     else:
         mid=int(len(List)/2)
-        L1=MSort(List[:mid])
-        L2=MSort(List[mid:])
+        L1=Merge_Sort(List[:mid])
+        L2=Merge_Sort(List[mid:])
         List.clear()
         i=0
         j=0
@@ -29,6 +29,6 @@ if(__name__=="__main__"):
     print(List)
     print()
 
-    List=MSort(List)
+    List=Merge_Sort(List)
     print(List)
     print()
