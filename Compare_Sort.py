@@ -10,6 +10,8 @@ import Appl_Selection_Sort
 import Imp_Selection_Sort
 import Appl_Merge_Sort
 import Imp_Merge_Sort
+import Appl_Quick_Sort
+import Imp_Quick_Sort
 
 import time
 
@@ -107,3 +109,26 @@ else:
     print("Andere Ergebnisse")
 
 #Appl takes longer
+    
+ApplQuickt1=time.time()
+
+ApplSortList=Appl_Quick_Sort.Quick_Sort(RandList.copy())
+
+ApplQuickt2=time.time()
+
+ImpQuickt1=time.time()
+
+ImpSortList=Imp_Quick_Sort.Quick_Sort(RandList.copy())
+
+ImpQuickt2=time.time()
+
+if(ApplSortList==ImpSortList):
+    print("Quick Sort: ")
+    print()
+    print("ApplSortTime: "+str(ApplQuickt2-ApplQuickt1))
+    print("ImpSortTime: "+str(ImpQuickt2-ImpQuickt1))
+    print()
+else:
+    print("Andere Ergebnisse")
+
+#Appl takes more time
